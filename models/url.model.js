@@ -13,7 +13,11 @@ module.exports = (sequelize, Sequelize) => {
       },
       description: {
         type: Sequelize.STRING,
-      }
+      },
+      visitCount: {
+        type: Sequelize.INTEGER,
+        defaultValue: 0,
+      },
     },
     { underscored: true }
   );
