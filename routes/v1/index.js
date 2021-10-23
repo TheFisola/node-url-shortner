@@ -1,9 +1,16 @@
 const express = require('express');
-const router = express.Router();
-const userController = require('../../controllers/url.controller');
+const validate = require('../../middlewares/validate');
+const urlController = require('../../controllers/url.controller');
+const urlValidation = require('../../validations/url.validation');
 
-router.post('/encode', userController.encodeUrl);
-router.get('/decode', userController.decodeUrl);
-router.get('/statistics/:urlKey', userController.getUrlStats);
+const router = express.Router();
+
+router.post(
+  '/encode',
+  validate(urlValidation.encodeUrl),
+  urlController.encodeUrl
+);
+router.get('/decode', urlController.decodeUrl);
+router.get('/statistics/:urlKey', urlController.getUrlStats);
 
 module.exports = router;

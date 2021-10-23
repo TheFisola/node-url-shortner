@@ -9,7 +9,12 @@ const encodeUrl = async (req, res) => {
 };
 
 const decodeUrl = async (req, res) => {
-  // TODO: Validate request
+  if (!req.query.urlKey) {
+    res
+      .status(400)
+      .json({ status: false, message: 'urlKey query parameter is required!' });
+  }
+
   const url = await urlService.decodeUrl(req.query.urlKey);
 
   if (!url) {
@@ -26,7 +31,6 @@ const decodeUrl = async (req, res) => {
 };
 
 const getUrlStats = async (req, res) => {
-  // TODO: Validate request
   const url = await urlService.getUrlStats(req.params.urlKey);
 
   if (!url) {
