@@ -1,7 +1,6 @@
 const Url = require('../models').urls;
 
 const generateUrlKey = () => {
-  // TODO: Generate new key if key already exists
   return Math.random()
     .toString(36)
     .substr(2, 5)
@@ -11,7 +10,6 @@ const generateUrlKey = () => {
 };
 
 const updateVisitCount = async (url) => {
-  console.log('URL: ', url);
   const { visitCount, urlKey } = url;
   await Url.update(
     { visitCount: visitCount + 1 },
@@ -24,7 +22,15 @@ const updateVisitCount = async (url) => {
 };
 
 const encodeUrl = async (encodeUrlRequest) => {
-  encodeUrlRequest.urlKey = generateUrlKey();
+  let urlKey;
+  let url;
+  // Generate key that does not already exist
+  do {
+    urlKey = generateUrlKey();
+    url = await Url.findOne({ where: { urlKey } });
+  } while (url);
+
+  encodeUrlRequest.urlKey = urlKey;
   return Url.create(encodeUrlRequest);
 };
 
@@ -43,5 +49,5 @@ const getUrlStats = async (urlKey) => {
 module.exports = {
   encodeUrl,
   decodeUrl,
-  getUrlStats
+  getUrlStats,
 };
