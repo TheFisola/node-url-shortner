@@ -1,6 +1,7 @@
 const Url = require('../models').urls;
 
 const generateUrlKey = () => {
+  // TODO: Generate new key if key already exists
   return Math.random()
     .toString(36)
     .substr(2, 5)
@@ -14,6 +15,11 @@ const encodeUrl = async (encodeUrlRequest) => {
   return Url.create(encodeUrlRequest);
 };
 
+const decodeUrl = async (urlKey) => {
+  return Url.findOne({ where: { urlKey } });
+};
+
 module.exports = {
   encodeUrl,
+  decodeUrl,
 };
