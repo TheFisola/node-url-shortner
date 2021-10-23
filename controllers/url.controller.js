@@ -25,8 +25,25 @@ const decodeUrl = async (req, res) => {
   });
 };
 
+const getUrlStats = async (req, res) => {
+  // TODO: Validate request
+  const url = await urlService.getUrlStats(req.params.urlKey);
+
+  if (!url) {
+    res
+      .status(404)
+      .json({ status: false, message: 'Url with this key does not exist!' });
+  }
+
+  res.status(200).json({
+    status: true,
+    message: 'Successful',
+    data: url,
+  });
+};
 
 module.exports = {
   encodeUrl,
-  decodeUrl
+  decodeUrl,
+  getUrlStats,
 };

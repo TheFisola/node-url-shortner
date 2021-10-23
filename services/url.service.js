@@ -36,7 +36,12 @@ const decodeUrl = async (urlKey) => {
   return url;
 };
 
+const getUrlStats = async (urlKey) => {
+  return Url.findOne({ where: { urlKey } });
+};
+
 module.exports = {
   encodeUrl,
   decodeUrl,
+  getUrlStats
 };
