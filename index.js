@@ -3,11 +3,21 @@ const actuator = require('express-actuator');
 const httpStatus = require('http-status');
 const cors = require('cors');
 const routes = require('./routes/v1');
+const db = require('./models');
+
+require('dotenv').config();
 
 const app = express();
 
+const PORT = process.env.PORT;
+
+
+
 // TODO: Move to .env
-app.listen('3000', () => console.log('App running on port 3000'))
+app.listen(PORT, () => console.log(`App running on port ${PORT}`));
+
+
+db.sequelize.sync();
 
 app.use(express.json());
 app.use(actuator());
