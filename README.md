@@ -15,13 +15,14 @@ $ npm -v && node -v
 v8.16.0
 ```
 
-The app uses Postgres as the database
+- **DATABASE**
+  The app uses Postgres as the database
 
-A .env-example file contains required properties to run the app successfully. Create a **.env** and a **.env.test** file from the .env-example file.
+A **.env-example** file contains required properties to run the app successfully. Create a **.env** and a **.env.test** file from the **.env-example file**
 
 ## Table of contents
 
-- [Project Name](#node-url-shortner)
+- [Node Url Shortner](#node-url-shortner)
   - [Prerequisites](#prerequisites)
   - [Table of contents](#table-of-contents)
   - [Getting Started](#getting-started)
@@ -29,6 +30,7 @@ A .env-example file contains required properties to run the app successfully. Cr
     - [Serving the app](#serving-the-app)
     - [Serving the app](#serving-the-app)
     - [Installing dependencies](#installing-dependencies)
+  - [Postman Collection]
 
 ## Getting Started
 
