@@ -4,14 +4,11 @@ const cors = require('cors');
 const routes = require('./routes/v1');
 const db = require('./models');
 
-require('dotenv').config();
+require('dotenv-flow').config();
 
 const app = express();
 
 const PORT = process.env.PORT;
-
-// TODO: Move to .env
-app.listen(PORT, () => console.log(`App running on port ${PORT}`));
 
 db.sequelize.sync();
 
@@ -36,3 +33,7 @@ app.use((error, req, res, next) => {
     },
   });
 });
+
+module.exports = app.listen(PORT, () =>
+  console.log(`App running on port ${PORT}`)
+);

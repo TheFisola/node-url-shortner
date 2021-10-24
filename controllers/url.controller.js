@@ -1,7 +1,6 @@
 const urlService = require('../services/url.service');
 
 const encodeUrl = async (req, res) => {
-  // TODO: Validate request
   const { urlKey } = await urlService.encodeUrl(req.body);
   res
     .status(201)

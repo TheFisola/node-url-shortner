@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cross-env NODE_ENV=test mocha tests --timeout 10000"
   },
   "repository": {
     "type": "git",
@@ -22,7 +22,7 @@
   "homepage": "https://github.com/TheFisola/node-url-shortner#readme",
   "dependencies": {
     "cors": "^2.8.5",
-    "dotenv": "^10.0.0",
+    "dotenv-flow": "^3.2.0",
     "express": "^4.17.1",
     "express-actuator": "^1.8.0",
     "http-status": "^1.5.0",
@@ -30,5 +30,11 @@
     "pg": "^8.7.1",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.7.0"
+  },
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "chai-http": "^4.3.0",
+    "cross-env": "^7.0.3",
+    "mocha": "^9.1.3"
   }
 }
